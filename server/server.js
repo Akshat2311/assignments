@@ -21,6 +21,10 @@ app.use(
 
 app.use("/api/assignment/v1",userRoutes);
 
+app.get("/",(req,res) => {
+  res.send("Hello assignment server")
+})
+
 const PORT = process.env.PORT || 5000
 
 const NODE_ENV = process.env.NODE_ENV || "development"

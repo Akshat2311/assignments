@@ -1,7 +1,7 @@
 import { users } from "./data.js";
-import User from "./models/user.js";
-import Order from "./models/order.js";
-import connectDB from "./config/db.js";
+import User from "./model/user.js";
+import Order from "./model/order.js";
+import {connectDB} from "./config/db.js";
 
 connectDB();
 

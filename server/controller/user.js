@@ -35,10 +35,11 @@ const login = asyncHandler(async(req,res) => {
     const user = await User.findOne({ phone_number })
     if(user){
         if(await user.matchPassword(password)){
-            const resUser = await User.find({ phone_number }).select("-password")
             res.status(200).json({
                 message:"Logged in",
-                ...resUser,
+                _id:user._id,
+                name:user.name,
+                phone_number:user.phone_number,
                 token:generateToken(user._id)
             })
         }
@@ -57,11 +58,11 @@ const login = asyncHandler(async(req,res) => {
 
 const addOrder = asyncHandler(async(req,res) => {
     const user = await User.findOne({ _id:req.user._id })
-    const { sub_total } = req.body
+    const { sub_total, phone_number } = req.body
     if(user){
         const order = await Order.create({
             user_id:user._id,
-            phone_number:user.phone_number,
+            phone_number:phone_number || user.phone_number,
             sub_total
         })
         if(order){
@@ -83,8 +84,7 @@ const addOrder = asyncHandler(async(req,res) => {
 })
 
 const getOrders = asyncHandler(async(req,res) => {
-    const user_id = req.query.user_id
-    const orders = await Order.find({ user_id })
+    const orders = await Order.find({ user_id:req.user._id })
     if(orders){
         res.status(200).json({
             orders

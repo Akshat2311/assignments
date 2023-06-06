@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Assignment for node js",
   "main": "server",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon server/server",
-    "import":"node server/seeder",
-    "destroy":"node server/seeder -d"
+    "start": "nodemon server/server",
+    "import": "node server/seeder",
+    "destroy": "node server/seeder -d",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "author": "Akshat Mishra",
   "license": "MIT",
