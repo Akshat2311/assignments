@@ -11,4 +11,3 @@ export const users = [
         password: bcrypt.hashSync('123456', 10)
     }
 ]
-

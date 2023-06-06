@@ -14,7 +14,11 @@ const register = asyncHandler(async(req,res) => {
         })
         if(newUser){
             res.status(201).json({
-                message:"User created"
+                message:"User created",
+                _id:newUser._id,
+                name:newUser.name,
+                phone_number:newUser.phone_number,
+                token:generateToken(newUser._id)
             })
         }
         else{
