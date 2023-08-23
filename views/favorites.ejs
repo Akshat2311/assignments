@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>My Favorite Movies</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Poster</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% favorites.forEach(favorite=> { %>
+                    <tr>
+                        <td>
+                            <%= favorite.title %>
+                        </td>
+                        <td>
+                            <%= favorite.year %>
+                        </td>
+                        <td><img src="<%= favorite.poster %>" alt="<%= favorite.title %> Poster" height="100"></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
